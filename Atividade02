@@ -1,0 +1,51 @@
+package app;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class App {
+	public static void main(String[] args) {
+	List<Integer> lista = new ArrayList<>();
+	
+	int num1 = 0;
+	int num = 0;
+	int num2 = 1;
+	boolean aux = false;
+	
+	//CALCULA A SEQUENCIA FIBONACCI
+	for(int i = 0; i<15; i++) {
+		int soma = num1 + num2;
+		lista.add(soma);
+		num1 = num2;
+		num2 = soma;
+	}
+	
+	
+	try (Scanner teclado = new Scanner(System.in)) {
+		System.out.println("Digite um número: ");
+		num = teclado.nextInt();
+		
+		//VERIFICA SE O CARACTER DIGITADO É UM NÚMERO
+		for (Integer integer : lista) {
+			//VERIFICA SE O NUMERO PERTENCE A SEQUENCIA
+			if(num == integer) {
+				System.out.println("Esse número pertence a sequência Fibonacci!");
+				System.out.println("\nSEQUÊNCIA FIBONNACI:");
+				System.out.println(lista + "...");
+				aux = false;
+				break;
+			}
+			//VERIFICA SE O NUMERO NÃO PERTENCE A SEQUENCIA
+			if(num != integer) {
+				aux = true;
+			}
+		}
+		if(aux == true) {
+			System.out.println("Esse número não pertence a sequência Fibonnaci!");
+		}
+	}catch (Exception e) {
+		System.out.println("ERRO: Número inválido!");
+	}
+	}
+}
